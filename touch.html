@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>touch</title>
+    <style>
+        body,html{width: 100%;height:100%;}
+        #container{width:100%;height: 100%;background: #ccc;}
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    var startx,starty,endx,endy,movex,movey;
+    document.getElementById("container").addEventListener('touchstart',function(event){
+
+        starty = event.targetTouches[0].clientY;
+        //console.log(event.targetTouches);
+    })
+    document.getElementById("container").addEventListener('touchend',function(event){
+        console.log(event.changedTouches);
+        endx = event.changedTouches[0].clientX;
+        endy = event.changedTouches[0].clientY;
+
+        movey = endy > starty ? endy - starty : starty - endy;
+        if(movey > 80){
+          console.log('滚动一页'+movey)
+        }else{
+            console.log('高度不够'+movey);
+        }
+    })
+</script>
+</body>
+</html>
