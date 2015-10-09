@@ -27,9 +27,60 @@
 	observe(arr,function(name,value,old){
 		console.log(name+'__'+value+'__'+old);
 	});
-	arr.push(5);
-	arr[4] = 7;
+	//arr.push(5);
+	//arr[4] = 7;
 
 
 </script>
 
+<script>
+	//prototype
+	function test(){}
+	//console.log(test.prototype);
+	function fish(name,color){
+		this.name = name;
+		this.color = color;
+	}
+	fish.prototype.livesin = "water";
+	fish.prototype.price = "20";
+
+	var fish1 = new fish("青鱼","black");
+	var fish2 = new fish("三文鱼","yellow");
+	var fish3 = new fish("金鱼","red");
+	
+	for(var i=1;i<=3;i++){
+		var fish = eval("fish"+i);
+		console.log(fish.name+","+fish.color+","+fish.livesin+","+fish.price);
+	}
+	//fish.prototype.weight = "10kg";//报错  can not set property
+
+	//alert(fish1.weight);
+
+	//定义一个类型
+	function Aclass(){
+		this.property = "1";
+		this.method = function(){
+			alert(1);
+		}
+	}
+	var exam1 = new Aclass();
+	// console.log(exam1.property);
+	//exam1.method();
+
+	//原型继承
+	function father(id){
+		this.id = id;
+	}
+	father.prototype.tostring = function(){
+		return father+this.id;
+	}
+
+	function son(id){
+		this.id = id;
+	}
+	son.prototype = new father();//原型继承
+	//console.log(son.);
+
+
+
+</script>
